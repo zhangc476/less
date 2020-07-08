@@ -184,3 +184,32 @@ div{
 }
 ```
 
+## mixins默认混合值
+
+```less
+.w(@width: 100px){
+    width: @width;
+}
+#h(@height: 100%){
+    height: @height;
+}
+
+.long{
+    .w();
+    .meng {
+        #h(50%)
+    } 
+}
+```
+
+编译后的结果
+
+```less
+.long {
+  width: 100px;
+}
+.long .meng {
+  height: 50%;
+}
+```
+
