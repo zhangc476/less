@@ -292,3 +292,38 @@ h1 {
 
 ```
 
+## !important
+
+Use the `!important` keyword after mixin call to mark all properties inherited by it as `!important`
+
+```less
+.my(@width: 200px; @height: 300px){
+    width: @width;
+    height: @height;
+}
+
+.meng{
+    .my;
+}
+
+.long{
+    .my(30px);
+}
+
+.menglong{
+    .my(100px, 100px)
+}
+
+.meng2{
+    .my !important;
+}
+
+.long2{
+    .my(30px) !important;
+}
+
+.menglong2{
+    .my(100px, 100px) !important;
+}
+```
+

@@ -1,18 +1,28 @@
-.transition(@moveStyle: all; @delayTime: 4s; @moveType: ease-in; @moveTime: 2s){
-    -webkit-transition: @arguments;
-    -moz-transition: @arguments;
-    -o-transition: @arguments;
-    -ms-transition: @arguments;
-    transition: @arguments;
-}
-div{
-    .transition;
+.my(@width: 200px; @height: 300px){
+    width: @width;
+    height: @height;
 }
 
-span{
-    .transition(width)
+.meng{
+    .my;
 }
 
-h1{
-    .transition(height; 8s)
+.long{
+    .my(30px);
+}
+
+.menglong{
+    .my(100px, 100px)
+}
+
+.meng2{
+    .my !important;
+}
+
+.long2{
+    .my(30px) !important;
+}
+
+.menglong2{
+    .my(100px, 100px) !important;
 }
