@@ -85,3 +85,42 @@ div{
 }
 ```
 
+# mixins
+
+## 继承类名
+
+在less中，mixins可以将一个定义好的class A轻松的引入到另一个class B中，从而简单实现 class B继承 class A中的所有属性
+
+```less
+.w{
+    width: 100px;
+}
+#h{
+    height: 200px;
+}
+
+.long{
+    .w;
+    .meng {
+        #h
+    }
+}
+```
+
+以上代码编译的结果
+
+```css
+.w {
+  width: 100px;
+}
+#h {
+  height: 200px;
+}
+.long {
+  width: 100px;
+}
+.long .meng {
+  height: 200px;
+}
+```
+
