@@ -55,3 +55,33 @@ less包含一套自定义的语法及一个解析器，用户根据这些语法�
 }
 ```
 
+## 选择器插值
+
+如果在选择器中使用less变量，只需要使用和字符串插件一样的@{selector}即可
+
+```less
+@myurl: logo;
+
+.@{myurl}{
+    background-image: url("www.xx/images/logog.jpg");
+}
+```
+
+## media query变量
+
+如果希望在media query中使用less变量，可以直接使用普通的变量方式. ~后面的值是不被编译的
+
+```less
+@singleQuery:~"(max-width:768px)";
+
+div{
+    background-color: red;
+}
+
+@media screen and @singleQuery{
+    div{
+        background-color: blue;
+    }
+}
+```
+

@@ -1,5 +1,11 @@
-@myurl:"www.xxx.xx";
+@singleQuery:~"(max-width:768px)";
 
-.logo {
-    background-image: url("@{myurl}/images/logog.jpg");
+div{
+    background-color: red;
+}
+
+@media screen and @singleQuery{
+    div{
+        background-color: blue;
+    }
 }
