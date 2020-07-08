@@ -327,3 +327,36 @@ Use the `!important` keyword after mixin call to mark all properties inherited b
 }
 ```
 
+## 高级动态参数
+
+```less
+//接收0-n个参数
+.mixin1(...){
+    padding: @arguments;
+}
+//接收0-n个参数
+.mixin2(@a: 1; ...){
+    margin: @arguments;
+}
+//接收1-n个参数
+.mixin3(@a; ...){
+    margin: @arguments;
+}
+//接收2-n个参数
+.mixin4(@a; @b; ...){
+    margin: @arguments;
+}
+.div1{
+    .mixin1(20px 30px 40px 50px)
+}
+.div2{
+    .mixin2(20px, 30px 40px 50px)
+}
+.div3{
+    .mixin3(1)
+}
+.div3{
+    .mixin4(1, 2)
+}
+```
+

@@ -1,28 +1,28 @@
-.my(@width: 200px; @height: 300px){
-    width: @width;
-    height: @height;
+//接收0-n个参数
+.mixin1(...){
+    padding: @arguments;
 }
-
-.meng{
-    .my;
+//接收0-n个参数
+.mixin2(@a: 1; ...){
+    margin: @arguments;
 }
-
-.long{
-    .my(30px);
+//接收1-n个参数
+.mixin3(@a; ...){
+    margin: @arguments;
 }
-
-.menglong{
-    .my(100px, 100px)
+//接收2-n个参数
+.mixin4(@a; @b; ...){
+    margin: @arguments;
 }
-
-.meng2{
-    .my !important;
+.div1{
+    .mixin1(20px 30px 40px 50px)
 }
-
-.long2{
-    .my(30px) !important;
+.div2{
+    .mixin2(20px, 30px 40px 50px)
 }
-
-.menglong2{
-    .my(100px, 100px) !important;
+.div3{
+    .mixin3(1)
+}
+.div3{
+    .mixin4(1, 2)
 }
