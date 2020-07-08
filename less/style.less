@@ -1,9 +1,11 @@
-@color: #f00;
+@width: 1px;
 
-#header {
-    color: @color
-}
-
-h2{
-    color: @color
+.meng {
+    @width: 20px;
+    .long{
+        @width: 9000px;
+        width: @width;
+        @width: 220px;
+    }
+    width: @width;
 }
