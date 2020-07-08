@@ -1,11 +1,5 @@
-@width: 1px;
+@myurl:"www.xxx.xx";
 
-.meng {
-    @width: 20px;
-    .long{
-        @width: 9000px;
-        width: @width;
-        @width: 220px;
-    }
-    width: @width;
+.logo {
+    background-image: url("@{myurl}/images/logog.jpg");
 }

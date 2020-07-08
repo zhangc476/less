@@ -43,3 +43,15 @@ less包含一套自定义的语法及一个解析器，用户根据这些语法�
 }
 ```
 
+## 字符串插值
+
+变量可以使用像@{name}这样的结构嵌入到字符串中，即字符串拼接
+
+```less
+@myurl:"www.xxx.xx";
+
+.logo {
+    background-image: url("@{myurl}/images/logog.jpg");
+}
+```
+
