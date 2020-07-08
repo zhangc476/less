@@ -1,15 +1,15 @@
-.mixin(dark; @color) {
-  color: darken(@color, 10%);
+.mixin (@a) when (lightness(@a) >= 50%) {
+  background-color: black;
 }
-.mixin(light; @color) {
-  color: lighten(@color, 10%);
+.mixin (@a) when (lightness(@a) < 50%) {
+  background-color: white;
 }
-.mixin(@_; @color) {
-  display: block;
+.mixin (@a) {
+  color: @a;
 }
-
-@switch: light;
-
-.class {
-  .mixin(@switch; #888);
+.class1 {
+  .mixin(#ddd);
+}
+.class2 {
+  .mixin(#555);
 }

@@ -387,3 +387,27 @@ Here's what happened:
 - The first mixin definition didn't match because it expected `dark` as the first argument.
 - The second mixin definition matched, because it expected `light`.
 - The third mixin definition matched because it expected any value.
+
+## 条件匹配
+
+less选择使用<font color=red>guard混合</font>(类似@media的工作方式)进行条件判断，而不是加入if/else声明
+
+```less
+.mixin (@a) when (lightness(@a) >= 50%) {
+  background-color: black;
+}
+.mixin (@a) when (lightness(@a) < 50%) {
+  background-color: white;
+}
+.mixin (@a) {
+  color: @a;
+}
+.class1 {
+  .mixin(#ddd);
+}
+.class2 {
+  .mixin(#555);
+}
+
+```
+
