@@ -124,3 +124,32 @@ div{
 }
 ```
 
+## 带参数的mixin
+
+```less
+.w(@width){
+    width: @width;
+}
+#h(@height){
+    height: @height;
+}
+
+.long{
+    .w(100px);
+    .meng {
+        #h(50%)
+    } 
+}
+```
+
+以上代码编译的结果
+
+```less
+.long {
+  width: 100px;
+}
+.long .meng {
+  height: 50%;
+}
+```
+

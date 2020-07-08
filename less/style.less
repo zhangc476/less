@@ -1,13 +1,13 @@
-.w{
-    width: 100px;
+.w(@width){
+    width: @width;
 }
-#h{
-    height: 200px;
+#h(@height){
+    height: @height;
 }
 
 .long{
-    .w;
+    .w(100px);
     .meng {
-        #h
-    }
+        #h(50%)
+    } 
 }
