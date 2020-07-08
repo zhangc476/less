@@ -241,3 +241,54 @@ div{
 ```
 
 If you used the mixin with one parameter e.g. `.mixin(green);`, then properties of all mixins with exactly one mandatory parameter will be used. 也就是说如果.mixin(@color; @padding: 2) padding没有默认值2，那么只有第一个.mixin(@color)匹配
+
+## @arguments
+
+```less
+.transition(@moveStyle: all; @delayTime: 4s; @moveType: ease-in; @moveTime: 2s){
+    -webkit-transition: @arguments;
+    -moz-transition: @arguments;
+    -o-transition: @arguments;
+    -ms-transition: @arguments;
+    transition: @arguments;
+}
+div{
+    .transition;
+}
+
+span{
+    .transition(width)
+}
+
+h1{
+    .transition(height; 8s)
+}
+```
+
+编译后的代码
+
+```less
+div {
+  -webkit-transition: all 4s ease-in 2s;
+  -moz-transition: all 4s ease-in 2s;
+  -o-transition: all 4s ease-in 2s;
+  -ms-transition: all 4s ease-in 2s;
+  transition: all 4s ease-in 2s;
+}
+span {
+  -webkit-transition: width 4s ease-in 2s;
+  -moz-transition: width 4s ease-in 2s;
+  -o-transition: width 4s ease-in 2s;
+  -ms-transition: width 4s ease-in 2s;
+  transition: width 4s ease-in 2s;
+}
+h1 {
+  -webkit-transition: height 8s ease-in 2s;
+  -moz-transition: height 8s ease-in 2s;
+  -o-transition: height 8s ease-in 2s;
+  -ms-transition: height 8s ease-in 2s;
+  transition: height 8s ease-in 2s;
+}
+
+```
+

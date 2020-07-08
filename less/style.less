@@ -1,15 +1,18 @@
-.mixin(@color) {
-  color-1: @color;
+.transition(@moveStyle: all; @delayTime: 4s; @moveType: ease-in; @moveTime: 2s){
+    -webkit-transition: @arguments;
+    -moz-transition: @arguments;
+    -o-transition: @arguments;
+    -ms-transition: @arguments;
+    transition: @arguments;
 }
-.mixin(@color; @padding: 2) {
-  color-2: @color;
-  padding-2: @padding;
+div{
+    .transition;
 }
-.mixin(@color; @padding; @margin: 2) {
-  color-3: @color;
-  padding-3: @padding;
-  margin: @margin @margin @margin @margin;
+
+span{
+    .transition(width)
 }
-.some .selector div {
-  .mixin(#008000);
+
+h1{
+    .transition(height; 8s)
 }
