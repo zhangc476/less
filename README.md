@@ -360,3 +360,30 @@ Use the `!important` keyword after mixin call to mark all properties inherited b
 }
 ```
 
+## 模式匹配
+
+```less
+.mixin(dark; @color) {
+  color: darken(@color, 10%);
+}
+.mixin(light; @color) {
+  color: lighten(@color, 10%);
+}
+.mixin(@_; @color) {
+  display: block;
+}
+
+@switch: light;
+
+.class {
+  .mixin(@switch; #888);
+}
+```
+
+Where the color passed to `.mixin` was lightened. If the value of `@switch` was `dark`, the result would be a darker color.
+
+Here's what happened:
+
+- The first mixin definition didn't match because it expected `dark` as the first argument.
+- The second mixin definition matched, because it expected `light`.
+- The third mixin definition matched because it expected any value.

@@ -1,28 +1,15 @@
-//接收0-n个参数
-.mixin1(...){
-    padding: @arguments;
+.mixin(dark; @color) {
+  color: darken(@color, 10%);
 }
-//接收0-n个参数
-.mixin2(@a: 1; ...){
-    margin: @arguments;
+.mixin(light; @color) {
+  color: lighten(@color, 10%);
 }
-//接收1-n个参数
-.mixin3(@a; ...){
-    margin: @arguments;
+.mixin(@_; @color) {
+  display: block;
 }
-//接收2-n个参数
-.mixin4(@a; @b; ...){
-    margin: @arguments;
-}
-.div1{
-    .mixin1(20px 30px 40px 50px)
-}
-.div2{
-    .mixin2(20px, 30px 40px 50px)
-}
-.div3{
-    .mixin3(1)
-}
-.div3{
-    .mixin4(1, 2)
+
+@switch: light;
+
+.class {
+  .mixin(@switch; #888);
 }
