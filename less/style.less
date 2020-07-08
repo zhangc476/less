@@ -1,13 +1,15 @@
-.w(@width: 100px){
-    width: @width;
+.mixin(@color) {
+  color-1: @color;
 }
-#h(@height: 100%){
-    height: @height;
+.mixin(@color; @padding: 2) {
+  color-2: @color;
+  padding-2: @padding;
 }
-
-.long{
-    .w();
-    .meng {
-        #h(50%)
-    } 
+.mixin(@color; @padding; @margin: 2) {
+  color-3: @color;
+  padding-3: @padding;
+  margin: @margin @margin @margin @margin;
+}
+.some .selector div {
+  .mixin(#008000);
 }

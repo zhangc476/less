@@ -213,3 +213,31 @@ div{
 }
 ```
 
+## 多参数混合
+
+1. 多个参数可以使用分号或者逗号分隔，这里推荐使用<font color=red>分号</font>分隔,因为逗号有两重含义：它既可以表示混合的参数，也可以表示一个参数中一组值得分隔符
+2. 使用分号作为参数分隔符意味着可以将逗号分隔的一组值作为一个变量处理
+3. 2个参数，每个参数都含有通过逗号分隔的一组值得情况：.name(1,2,3; something, else)
+4. 3个参数，每个参数只含一个数字的情况：.name(1,2,3)
+5. 使用一个象征性的分号可以创建一个只含一个参数，但参数包含一组值得混合：.name(1,2,3;)
+
+```less
+.mixin(@color) {
+  color-1: @color;
+}
+.mixin(@color; @padding: 2) {
+  color-2: @color;
+  padding-2: @padding;
+}
+.mixin(@color; @padding; @margin: 2) {
+  color-3: @color;
+  padding-3: @padding;
+  margin: @margin @margin @margin @margin;
+}
+.some .selector div {
+  .mixin(#008000);
+}
+
+```
+
+If you used the mixin with one parameter e.g. `.mixin(green);`, then properties of all mixins with exactly one mandatory parameter will be used. 也就是说如果.mixin(@color; @padding: 2) padding没有默认值2，那么只有第一个.mixin(@color)匹配
