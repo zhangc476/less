@@ -415,3 +415,117 @@ less选择使用<font color=red>guard混合</font>(类似@media的工作方式)�
 
 支持的运算符包括：`>`, `>=`, `=`, `=<`, `<`. Additionally, the keyword `true` is the only truthy value
 
+### 逻辑运算符
+
+Use the `and` keyword to combine guards:
+
+```less
+.mixin (@a) when (isnumber(@a)) and (@a > 0) { ... }
+```
+
+You can emulate the *or* operator by separating guards with a comma `,`. If any of the guards evaluate to true, it's considered a match:
+
+```less
+.mixin (@a) when (@a > 10), (@a < -10) { ... }
+```
+
+Use the `not` keyword to negate conditions:
+
+```less
+.mixin (@b) when not (@b > 0) { ... }
+```
+
+## &的使用
+
+The `&` operator represents the parent selectors of a [nested rule](http://lesscss.cn/features/#features-overview-feature-nested-rules) and is most commonly used when applying a modifying class or pseudo-class to an existing selector
+
+```less
+a {
+  color: blue;
+  &:hover {
+    color: green;
+  }
+}
+```
+
+编译后的代码
+
+```css
+a {
+  color: blue;
+}
+a:hover {
+  color: green;
+}
+```
+
+### 高级使用1
+
+```less
+.button {
+  &-ok {
+    background-image: url("ok.png");
+  }
+  &-cancel {
+    background-image: url("cancel.png");
+  }
+
+  &-custom {
+    background-image: url("custom.png");
+  }
+}
+```
+
+编译后的代码
+
+```css
+.button-ok {
+  background-image: url("ok.png");
+}
+.button-cancel {
+  background-image: url("cancel.png");
+}
+.button-custom {
+  background-image: url("custom.png");
+}
+```
+
+### 高级使用2
+
+```less
+.link {
+  & + & {
+    color: red;
+  }
+
+  & & {
+    color: green;
+  }
+
+  && {
+    color: blue;
+  }
+
+  &, &ish {
+    color: cyan;
+  }
+}
+```
+
+编译后的代码
+
+```css
+.link + .link {
+  color: red;
+}
+.link .link {
+  color: green;
+}
+.link.link {
+  color: blue;
+}
+.link, .linkish {
+  color: cyan;
+}
+```
+

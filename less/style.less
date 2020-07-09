@@ -1,8 +1,6 @@
-.mixin (@a) when (isnumber(@a)) and (@a > 0) { 
-    display: inline;
- }
-
- @a: 10;
- div{
-     .mixin(@a)
- }
+a {
+  color: blue;
+  &:hover {
+    color: green;
+  }
+}
