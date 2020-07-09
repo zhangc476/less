@@ -55,6 +55,18 @@ less包含一套自定义的语法及一个解析器，用户根据这些语法�
 }
 ```
 
+字符串拼接
+
+```less
+@n: 100;
+div {
+  color: orange;
+  width: ~"@{n}px";
+}
+```
+
+
+
 ## 选择器插值
 
 如果在选择器中使用less变量，只需要使用和字符串插件一样的@{selector}即可
@@ -526,6 +538,48 @@ a:hover {
 }
 .link, .linkish {
   color: cyan;
+}
+```
+
+## 命名空间
+
+```less
+#bundle {
+  .button {
+    display: block;
+    border: 1px solid black;
+    background-color: grey;
+    &:hover {
+      background-color: white;
+    }
+  }
+}
+
+#header a {
+  color: orange;
+  #bundle > .button;
+}
+```
+
+编译后的代码
+
+```css
+#bundle .button {
+  display: block;
+  border: 1px solid black;
+  background-color: grey;
+}
+#bundle .button:hover {
+  background-color: white;
+}
+#header a {
+  color: orange;
+  display: block;
+  border: 1px solid black;
+  background-color: grey;
+}
+#header a:hover {
+  background-color: white;
 }
 ```
 
